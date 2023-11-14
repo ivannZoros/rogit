@@ -8,8 +8,9 @@
 using namespace std;
 
 static bool isGameover = false;
-int heroX = (rand() % 8);
-int heroY = (rand() % 9);
+
+int heroX = 1;
+int heroY = 1;
 int lives = 10;
 int money = 0;
 char  map[7][8] = {
