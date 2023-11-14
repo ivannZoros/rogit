@@ -16,12 +16,6 @@ int main()
                     heroY--;
                     --lives;
                 }
-                if (map[heroY][heroX] == '$')
-                {
-                    map[heroY][heroX] = '.';
-                    lives += 2;
-                }
-
                 break;
             }
             case 80:
@@ -30,11 +24,6 @@ int main()
                 {
                     heroY++;
                     --lives;
-                }
-                if (map[heroY][heroX] == '$')
-                {
-                    map[heroY][heroX] = '.';
-                    lives += 2;
                 }
                 break;
             }
@@ -45,11 +34,6 @@ int main()
                     heroX--;
                     --lives;
                 }
-                if (map[heroY][heroX] == '$')
-                {
-                    map[heroY][heroX] = '.';
-                    lives += 2;
-                }
                 break;
             }
             case 77:
@@ -59,20 +43,19 @@ int main()
                     heroX++;
                     --lives;
                 }
-                if (map[heroY][heroX] == '$')
-                {
-                    map[heroY][heroX] = '.';
-                    lives += 2;
-                }
                 break;
             }
 
+        }
+        if (map[heroY][heroX] == '$')
+        {
+            map[heroY][heroX] = '.';
+            lives += 3;
         }
 
         if (lives == -1) {
             char choose;
             cout << "GAME OVER\n";
-            PrintMap;
             isGameover = true;
             cout << "continue game ? y / n" << endl;
             cin >> choose;

@@ -41,6 +41,9 @@ char PrintMap()
 
     }
     cout << "Max lives - " << lives << endl;
+    if(map[heroY][heroX] == '>'){
+        cout << "dsitk";
+    }
     return 0;
 }
 
