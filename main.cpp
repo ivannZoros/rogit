@@ -13,6 +13,9 @@ int main()
         if (lvl == 2){
             PrintMap2();
         }
+        if (lvl == 3){
+            cout << "You are WIN!!!"<< endl;
+        }
         int i_input;
         i_input = _getch();
         switch (i_input)
@@ -58,17 +61,17 @@ int main()
         if (map[heroY][heroX] == '$' && lvl == 0 )
         {
             map[heroY][heroX] = '.';
-            lives += 3;
+            lives += 5;
         }
         if (map1[heroY][heroX] == '$' && lvl == 1 )
         {
             map1[heroY][heroX] = '.';
-            lives += 3;
+            lives += 5;
         }
         if (map2[heroY][heroX] == '$' && lvl == 2 )
         {
             map2[heroY][heroX] = '.';
-            lives += 3;
+            lives += 5;
         }
         if (map[heroY][heroX] == '>' || map1[heroY][heroX] == '>' || map2[heroY][heroX] == '>' )
         {
@@ -77,7 +80,7 @@ int main()
             heroY = 1;
 
         }
-        if (lives == -1) {
+        if (lives == 0) {
             char choose;
             cout << "GAME OVER\n";
             isGameover = true;
@@ -85,15 +88,15 @@ int main()
             cin >> choose;
             if (choose == 'y') {
                 isGameover = false;
+                heroX = 1;
+                heroY = 1;
                 lives = 10;
+                lvl = 0;
             }
             else if (choose == 'n') {
                 break;
             }
 
-        }
-        if (map2[heroY][heroX] == '>' && lvl == 2){
-            cout << "You are WIN!!!"<< endl;
         }
         system("cls");
     }

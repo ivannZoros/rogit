@@ -5,6 +5,7 @@
 #include <iostream>
 #include <stdio.h>
 #include <conio.h>
+#include <string>
 using namespace std;
 
 static bool isGameover = false;
