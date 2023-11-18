@@ -1,7 +1,19 @@
 #include <iostream>
+#include "Header.h"
+class game {
+public:
+ game();
+public:
+    void run(){
+        p.printMap(0);
+        m.move();
+        p.replace();
+        p.checklvl();
 
-void print(int i) {
-    for(int j = 0; j < i; j++) {
-        std::cout << "hello" << std::endl;
+
     }
-}
+
+private:
+    Maps p;
+    Move m;
+};
