@@ -10,8 +10,7 @@ enum KEYS {
 };
 
 Game::Game()
-    : m_gameMap{std::make_unique<Map>()}
-    , m_player{std::make_unique<Player>(5, 5)}
+    : m_player{5, 5}
     , m_lvl{0}
     , m_isGameEnd {false}
 {}
@@ -19,7 +18,7 @@ Game::Game()
 void Game::startGame()
 {
     while(!m_isGameEnd) {
-        m_gameMap->printMap(m_lvl, m_player->X(), m_player->Y());
+        m_gameMap.printMap(m_lvl, m_player.X(), m_player.Y());
         playerInput();
         system("cls");
     }
@@ -30,19 +29,19 @@ void Game::playerInput()
     int input = _getch();
     switch (input) {
     case KEYS::KEY_UP: {
-        m_player->setY(m_player->Y() - 1);
+        m_player.setY(m_player.Y() - 1);
         break;
     }
     case KEYS::KEY_DOWN: {
-        m_player->setY(m_player->Y() + 1);
+        m_player.setY(m_player.Y() + 1);
         break;
     }
     case KEYS::KEY_RIGHT: {
-        m_player->setX(m_player->X() + 1);
+        m_player.setX(m_player.X() + 1);
         break;
     }
     case KEYS::KEY_LEFT: {
-        m_player->setX(m_player->X() - 1);
+        m_player.setX(m_player.X() - 1);
         break;
     }
     }

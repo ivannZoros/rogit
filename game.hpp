@@ -15,8 +15,8 @@ public:
     void playerInput();
 
 private:
-    std::unique_ptr<Map> m_gameMap;
-    std::unique_ptr<Player> m_player;
+    Map m_gameMap;
+    Player m_player;
     int m_lvl;
     bool m_isGameEnd;
 };
