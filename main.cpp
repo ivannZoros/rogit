@@ -2,17 +2,22 @@
 
 int main()
 {
+
     string name;
     cout << "Enter your name" << endl;
     cin >> name;
+    Game game;
     while (!isGameover) {
+
+        game.run();
+
         if (lives == 0 || lvl == 3 ) {
             char choose;
             if (lives ==0) {
                 cout << "GAME OVER\n";
             }
             if (lvl == 3){
-                cout << name << " is win" << endl;
+                cout << name << " is wins" << endl;
             }
             isGameover = true;
             cout << "continue game ? y / n" << endl;
@@ -22,7 +27,8 @@ int main()
                 heroX = 1;
                 heroY = 1;
                 lives = 10;
-                lvl = 0;
+                lvl = 1;
+                game.reset();
             }
             else if (choose == 'n') {
                 break;

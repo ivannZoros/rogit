@@ -13,107 +13,106 @@ int lvl = 0;
 int heroX = 1;
 int heroY = 1;
 int lives = 10;
-    class Maps {
+class Maps {
+    public:
+        void printMap(int lvl) {
+            fillMap();
+            for (int i = 0; i < 7; i++) {
+                for (int j = 0; j < 8; j++) {
 
-public:
-    void printMap(int lvl) {
-        for (int i = 0; i < 7; i++)
-        {
-            for (int j = 0; j < 8; j++) {
+                    if (i == heroY && j == heroX) {
+                        cout << " " << "@";
+                    } else {
+                        cout << " " << m_map[lvl][i][j];
+                    }
+                }
 
-                if (i == heroY && j == heroX) {
-                    cout << " " << "@";
-                }
-                else {
-                    cout << " " << m_map[lvl][i][j];
-                }
+                cout << endl;
+
             }
+        }
 
-            cout << endl;
+        void replace() {
+            if (m_map[lvl][heroY][heroX] == '$') {
+
+                m_map[lvl][heroY][heroX] = '.';
+                lives += 5;
+            }
+        };
+
+        void fillMap() {
+            m_map.push_back({
+                                    {'#', '#', '#', '#', '#', '#', '#', '#'},
+                                    {'#', '.', '$', '.', '.', '.', '.', '#'},
+                                    {'#', '.', '.', '.', '.', '.', '.', '#'},
+                                    {'#', '.', '.', '.', '.', '$', '.', '#'},
+                                    {'#', '.', '.', '.', '.', '.', '.', '#'},
+                                    {'#', '.', '$', '.', '.', '.', '>', '#'},
+                                    {'#', '#', '#', '#', '#', '#', '#', '#'}
+                            });
+
+            m_map.push_back({
+                                    {'#', '#', '#', '#', '#', '#', '#', '#'},
+                                    {'#', '.', '.', '.', '.', '.', '.', '#'},
+                                    {'#', '.', '.', '.', '.', '.', '.', '#'},
+                                    {'#', '.', '.', '.', '.', '$', '.', '#'},
+                                    {'#', '.', '.', '.', '.', '.', '.', '#'},
+                                    {'#', '$', '.', '.', '.', '.', '>', '#'},
+                                    {'#', '#', '#', '#', '#', '#', '#', '#'}
+                            });
+
+            m_map.push_back({
+                                    {'#', '#', '#', '#', '#', '#', '#', '#'},
+                                    {'#', '.', '.', '.', '.', '.', '.', '#'},
+                                    {'#', '.', '.', '.', '.', '.', '.', '#'},
+                                    {'#', '.', '.', '.', '.', '$', '.', '#'},
+                                    {'#', '.', '.', '.', '.', '.', '.', '#'},
+                                    {'#', '$', '.', '.', '.', '.', '>', '#'},
+                                    {'#', '#', '#', '#', '#', '#', '#', '#'}
+                            });
 
         }
-    }
-    void replace() {
-        if (m_map[lvl][heroY][heroX] == '$'){
-            m_map[lvl][heroY][heroX] = '.';
-            lives += 5;
+
+        void checklvl() {
+            if (m_map[lvl][heroY][heroX] == '>') {
+                lvl += 1;
+                heroX = 1;
+                heroY = 1;
+
+            }
         }
+    private:
+        std::vector<std::vector<std::vector<char>>> m_map;
     };
-    void fillMap() {
-        m_map.push_back({
-                                {'#','#','#','#','#','#','#','#'},
-                                {'#','.','$','.','.','.','.','#'},
-                                {'#','.','.','.','.','.','.','#'},
-                                {'#','.','.','.','.','$','.','#'},
-                                {'#','.','.','.','.','.','.','#'},
-                                {'#','.','$','.','.','.','>','#'},
-                                {'#','#','#','#','#','#','#','#'}
-                        });
-
-        m_map.push_back({
-                                {'#','#','#','#','#','#','#','#'},
-                                {'#','.','.','.','.','.','.','#'},
-                                {'#','.','.','.','.','.','.','#'},
-                                {'#','.','.','.','.','$','.','#'},
-                                {'#','.','.','.','.','.','.','#'},
-                                {'#','$','.','.','.','.','>','#'},
-                                {'#','#','#','#','#','#','#','#'}
-                        });
-
-        m_map.push_back({
-                                {'#','#','#','#','#','#','#','#'},
-                                {'#','.','.','.','.','.','.','#'},
-                                {'#','.','.','.','.','.','.','#'},
-                                {'#','.','.','.','.','$','.','#'},
-                                {'#','.','.','.','.','.','.','#'},
-                                {'#','$','.','.','.','.','>','#'},
-                                {'#','#','#','#','#','#','#','#'}
-                        });
-
-    }
-    void checklvl() {
-        if (m_map[lvl][heroY][heroX] == '>')
-        {
-            lvl += 1;
-            heroX = 1;
-            heroY = 1;
-
-        }
-    }
-private:
-    std::vector<std::vector<std::vector<char>>> m_map;
-
-};
-    class Move {
-public:
+class Move{
+    public:
     void move() {
-
         i_input = _getch();
         switch (i_input)
         {
             case 72: {
-                if (heroY - 1 >= 0 && (m_map[lvl][heroY - 1][heroX] != '#')) {
+                if (heroY - 1 > 0 ) { //  && (m_map[lvl][heroY - 1][heroX] != '#')
                     heroY--;
                     --lives;
                 }
                 break;
             }
             case 80: {
-                if (heroY + 1 < 7 && (m_map[lvl][heroY + 1][heroX] != '#' )) {
+                if (heroY + 1 < 6 ) { // && (m_map[lvl][heroY + 1][heroX] != '#' )
                     heroY++;
                     --lives;
                 }
                 break;
             }
             case 75: {
-                if (heroX - 1 >= 0 && (m_map[lvl][heroY][heroX - 1] != '#' )) {
+                if (heroX - 1 > 0 ) { // && (m_map[lvl][heroY][heroX - 1] != '#' )
                     heroX--;
                     --lives;
                 }
                 break;
             }
             case 77: {
-                if (heroX + 1 < 8 && (m_map[lvl][heroY][heroX + 1] != '#')) {
+                if (heroX + 1 < 7 ) { // && (m_map[lvl][heroY][heroX + 1] != '#')
                     heroX++;
                     --lives;
                 }
@@ -126,5 +125,27 @@ public:
 private:
     int i_input;
 };
+
+class Game {
+public:
+    Game() : p(),m(){}
+    void reset(){
+        p.fillMap();
+    }
+    void run(){
+        reset();
+        p.printMap(lvl);
+        cout << "Lives - " << lives << endl;
+        cout << "level - " << lvl << endl;
+        p.replace();
+        m.move();
+        p.checklvl();
+
+    }
+private:
+    Maps p;
+    Move m;
+};
+
 
 #endif //UNTITLED2_HEADER_H
