@@ -15,7 +15,7 @@ int heroY = 1;
 int lives = 10;
 class Maps {
     public:
-        void printMap(int lvl) {
+        void printMap() {
             fillMap();
             for (int i = 0; i < 7; i++) {
                 for (int j = 0; j < 8; j++) {
@@ -134,7 +134,7 @@ public:
     }
     void run(){
         reset();
-        p.printMap(lvl);
+        p.printMap();
         cout << "Lives - " << lives << endl;
         cout << "level - " << lvl << endl;
         p.replace();
