@@ -9,13 +9,10 @@
 using namespace std;
 
 static bool isGameover = false;
-int lvl = 0;
-int heroX = 1;
-int heroY = 1;
 int lives = 10;
 class Maps {
     public:
-        void printMap() {
+        void printMap(int lvl, int heroY,int heroX) {
             fillMap();
             for (int i = 0; i < 7; i++) {
                 for (int j = 0; j < 8; j++) {
@@ -25,6 +22,7 @@ class Maps {
                     } else {
                         cout << " " << m_map[lvl][i][j];
                     }
+
                 }
 
                 cout << endl;
@@ -33,8 +31,10 @@ class Maps {
         }
 
         void replace() {
+            int lvl = 0;
+            int heroX = 1;
+            int heroY = 1;
             if (m_map[lvl][heroY][heroX] == '$') {
-
                 m_map[lvl][heroY][heroX] = '.';
                 lives += 5;
             }
@@ -74,6 +74,9 @@ class Maps {
         }
 
         void checklvl() {
+            int lvl = 0;
+            int heroX = 1;
+            int heroY = 1;
             if (m_map[lvl][heroY][heroX] == '>') {
                 lvl += 1;
                 heroX = 1;
@@ -83,10 +86,13 @@ class Maps {
         }
     private:
         std::vector<std::vector<std::vector<char>>> m_map;
+
     };
 class Move{
     public:
     void move() {
+        int heroX = 1;
+        int heroY = 1;
         i_input = _getch();
         switch (i_input)
         {
@@ -126,26 +132,6 @@ private:
     int i_input;
 };
 
-class Game {
-public:
-    Game() : p(),m(){}
-    void reset(){
-        p.fillMap();
-    }
-    void run(){
-        reset();
-        p.printMap();
-        cout << "Lives - " << lives << endl;
-        cout << "level - " << lvl << endl;
-        p.replace();
-        m.move();
-        p.checklvl();
-
-    }
-private:
-    Maps p;
-    Move m;
-};
 
 
 #endif //UNTITLED2_HEADER_H

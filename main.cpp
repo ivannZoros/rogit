@@ -1,5 +1,5 @@
 #include "Header.h"
-
+#include "game.h"
 int main()
 {
 
@@ -10,8 +10,9 @@ int main()
     while (!isGameover) {
 
         game.run();
-
+        int lvl;
         if (lives == 0 || lvl == 3 ) {
+
             char choose;
             if (lives ==0) {
                 cout << "GAME OVER\n";
@@ -24,11 +25,9 @@ int main()
             cin >> choose;
             if (choose == 'y') {
                 isGameover = false;
-                heroX = 1;
-                heroY = 1;
                 lives = 10;
-                lvl = 1;
-                game.reset();
+                lvl = 0;
+
             }
             else if (choose == 'n') {
                 break;
@@ -37,6 +36,6 @@ int main()
         }
         system("cls");
     }
-
+    game.startGame();
     return 0;
 }
