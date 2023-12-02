@@ -1,29 +1,26 @@
-#ifndef UNTITLED2_GAME_H
-#define UNTITLED2_GAME_H
-#include "Header.h"
+#pragma once
 #include <memory>
+#include "map.h"
+#include "player.h"
+using namespace std;
+
+
 class Game {
 public:
     void startGame();
+    int lives = 10;
+
 public:
     Game();
 public:
-    void run(){
-        p.printMap(m_lvl,heroX,heroY);
-        p.replace();
-        cout << "Lives - " << lives << endl;
-        cout << "level - " << m_lvl << endl;
-        m.move();
-        p.checklvl();
-    }
+    void move() ;
 private:
     std::unique_ptr<Maps> m_gameMap;
+    std::unique_ptr<player> m_player;
     int m_lvl;
     bool m_isGameEnd;
-    Maps p;
-    Move m;
-    int heroX = 1;
-    int heroY = 1;
+
+private:
+    int i_input;
 };
 
-#endif //UNTITLED2_GAME_H
