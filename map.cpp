@@ -26,10 +26,10 @@ bool Maps::replace(int lvl,int playerX,int playerY) {
     return false;
 };
 bool Maps::checklvl(int lvl, int playerX,int playerY ) {
-        if (m_map[lvl][playerY][playerX] == '>') {
-            return true;
-        }
-        return false;
+    if (m_map[lvl][playerY][playerX] == '>') {
+        return true;
+    }
+    return false;
 
 }
 

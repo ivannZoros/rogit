@@ -52,4 +52,3 @@ private:
     std::vector<std::vector<std::vector<char>>> m_map;
 
 };
-

@@ -23,4 +23,3 @@ private:
 private:
     int i_input;
 };
-
